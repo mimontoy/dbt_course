@@ -2,8 +2,24 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    description: Replica of our postgres database
     database: raw
     schema: jaffle_shop
     tables:
       - name: customers
+        description: Raw customers data from jaffle shop
+        columns:
+          - name: id
+            description: The primary key of the customer data
       - name: orders
+
+  - name: stripe
+    database: raw
+    schema: stripe
+    tables:
+      - name: payment
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
